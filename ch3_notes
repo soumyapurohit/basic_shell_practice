@@ -1,0 +1,29 @@
+Shell varibles are in uppercase by convention
+Global variables or environment variables are available in all shells. The env or printenv commands can be used to display environment variables
+
+Local variables are only available in the current shell. Using the set built-in command without any options will display a list of all variables (including environment variables) and functions. The output will be sorted according to the current locale and displayed in a reusable format.
+
+Variables are namely of four types :
+
+1. String 
+2. Integer
+3. Constant
+4. Array
+
+Variables are case sensitive and capitalized by default. Giving local variables a lowercase name is a convention which is sometimes applied. However, you are free to use the names you want or to mix cases. Variables can also contain digits, but a name starting with a digit is not allowed
+
+Putting spaces around the equal sign will cause errors. It is a good habit to quote content strings when assigning values to variables: this will reduce the chance that you make errors.
+
+A variable created like the ones in the example above is only available to the current shell. It is a local variable: child processes of the current shell will not be aware of this variable. In order to pass variables to a subshell, we need to export them using the export built-in command. Variables that are exported are referred to as environment variables. Setting and exporting is usually done in one step:
+
+$*	Expands to the positional parameters, starting from one. When the expansion occurs within double quotes, it expands to a single word with the value of each parameter separated by the first character of the IFS special variable.
+$@	Expands to the positional parameters, starting from one. When the expansion occurs within double quotes, each parameter expands to a separate word.
+$#	Expands to the number of positional parameters in decimal.
+$?	Expands to the exit status of the most recently executed foreground pipeline.
+$-	A hyphen expands to the current option flags as specified upon invocation, by the set built-in command, or those set by the shell itself (such as the -i).
+$$	Expands to the process ID of the shell.
+$!	Expands to the process ID of the most recently executed background (asynchronous) command.
+$0	Expands to the name of the shell or shell script.
+$_	The underscore variable is set at shell startup and contains the absolute file name of the shell or script being executed as passed in the argument list. Subsequently, it expands to the last argument to the previous command, after expansion. It is also set to the full pathname of each command executed and placed in the environment exported to that command. When checking mail, this parameter holds the name of the mail file.
+
+The above example demonstrates the noclobber option, which prevents existing files from being overwritten by redirection operations
